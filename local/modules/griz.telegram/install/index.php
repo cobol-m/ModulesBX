@@ -8,10 +8,7 @@ use Bitrix\Main\ModuleManager;
 
 use Griz\Telegram\TelegramTable;
 
-include("../lib/telegramtable.php");
-
 //в данном модуле создадим адресную книгу, и здесь мы подключаем класс, который создаст нам эту таблицу
-
 
 Loc::loadMessages(__FILE__);
 
