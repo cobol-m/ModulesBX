@@ -10,12 +10,12 @@ $menu = array(
         'sort' => 400,//сортировка, в каком месте будет находится наш пункт
         'text' => Loc::getMessage('MYMODULE_MENU_TITLE'),//описание из файла локализации
         'title' => Loc::getMessage('MYMODULE_MENU_TITLE'),//название из файла локализации
-        'url' => 'mymodule_index.php',//ссылка на страницу из меню
+        'url' => '#',//ссылка на страницу из меню
         'items_id' => 'menu_references',//описание подпункта, то же, что и ранее, либо другое, можно вставить сколько угодно пунктов меню
         'items' => array(
             array(
                 'text' => Loc::getMessage('MYMODULE_SUBMENU_TITLE'),
-                'url' => 'mymodule_index.php?lang=' . LANGUAGE_ID,
+                'url' => '/bitrix/admin/config/telegram_integration.php?lang=' . LANGUAGE_ID,
                 'more_url' => array('mymodule_index.php?lang=' . LANGUAGE_ID),
                 'title' => Loc::getMessage('MYMODULE_SUBMENU_TITLE'),
             ),

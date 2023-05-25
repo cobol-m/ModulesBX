@@ -68,13 +68,10 @@ class griz_telegram extends CModule
     //вызываем метод удаления таблицы, если она существует
     public function uninstallDB()
     {
-        print_r(TelegramTable::getTableName());
-        exit();
-
         if (Loader::includeModule($this->MODULE_ID)) {
-            if (Application::getConnection()->isTableExists(Base::getInstance('\Bitrix\Modulka\TelegramTable')->getDBTableName())) {
+            if (Application::getConnection()->isTableExists(Base::getInstance('\Griz\Telegram\TelegramTable')->getDBTableName())) {
                 $connection = Application::getInstance()->getConnection();
-                $connection->dropTable(AdressTable::getTableName());
+                $connection->dropTable(TelegramTable::getTableName());
             }
         }
     }
@@ -92,11 +89,27 @@ class griz_telegram extends CModule
 
     function InstallFiles()
     {
+//        copyDirFiles(
+//            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/abtest/install/admin',
+//            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin',
+//            true, true
+//        );
+        copyDirFiles(
+            $_SERVER['DOCUMENT_ROOT'] . '/local/modules/griz.telegram/admin/main',
+            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin',
+            true, true
+        );
+
         return true;
     }
 
     function UnInstallFiles()
     {
+        deleteDirFiles(
+            $_SERVER['DOCUMENT_ROOT'] . '/local/modules/griz.telegram/admin/main',
+            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin'
+        );
+
         return true;
     }
 }

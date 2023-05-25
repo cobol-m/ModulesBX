@@ -17,7 +17,7 @@ class TelegramTable extends DataManager
     // название таблицы
     public static function getTableName()
     {
-        return 'telegram_integration';
+        return 'griz_telegram_integration';
     }
 
     // создаем поля таблицы
