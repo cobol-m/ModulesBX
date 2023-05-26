@@ -5,8 +5,8 @@ use Bitrix\Main\Entity\Base;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
-
 use Griz\Telegram\TelegramTable;
+use Griz\Telegram\Internals\Control\EventManager as GrizEventManager;
 
 //в данном модуле создадим адресную книгу, и здесь мы подключаем класс, который создаст нам эту таблицу
 
@@ -18,27 +18,22 @@ class griz_telegram extends CModule
     public function __construct()
     {
         $arModuleVersion = array();
-        //подключаем версию модуля (файл будет следующим в списке)
+
         include __DIR__ . '/version.php';
-        //присваиваем свойствам класса переменные из нашего файла
+
         if (is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion)) {
             $this->MODULE_VERSION = $arModuleVersion['VERSION'];
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         }
-        //пишем название нашего модуля как и директории
+
         $this->MODULE_ID = 'griz.telegram';
-        // название модуля
         $this->MODULE_NAME = Loc::getMessage('MYMODULE_MODULE_NAME');
-        //описание модуля
         $this->MODULE_DESCRIPTION = Loc::getMessage('MYMODULE_MODULE_DESCRIPTION');
-        //используем ли индивидуальную схему распределения прав доступа, мы ставим N, так как не используем ее
         $this->MODULE_GROUP_RIGHTS = 'N';
-        //название компании партнера предоставляющей модуль
         $this->PARTNER_NAME = Loc::getMessage('MYMODULE_MODULE_PARTNER_NAME');
         $this->PARTNER_URI = 'https://griz.it';//адрес вашего сайта
     }
 
-    //здесь мы описываем все, что делаем до инсталляции модуля, мы добавляем наш модуль в регистр и вызываем метод создания таблицы
     public function doInstall()
     {
         ModuleManager::registerModule($this->MODULE_ID);
@@ -79,12 +74,13 @@ class griz_telegram extends CModule
 
     function InstallEvents()
     {
-        return true;
+        GrizEventManager::addBasicEventHandlers();
     }
+
 
     function UnInstallEvents()
     {
-        return true;
+        GrizEventManager::removeBasicEventHandlers();
     }
 
     function InstallFiles()

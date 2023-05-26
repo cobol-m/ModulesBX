@@ -1,0 +1,5 @@
+<?php
+$MESS['GRIZ_TELEGRAM_MENU_GLOBAL_TITLE'] = 'GRIZ';
+$MESS['GRIZ_TELEGRAM_MENU_MAIN_TITLE'] = 'Интеграция Телеграм';
+$MESS['GRIZ_TELEGRAM_MENU_LIST_TITLE'] = 'Отправленные заказы';
+$MESS['GRIZ_TELEGRAM_MENU_SETTINGS_TITLE'] = 'Настройки модуля';

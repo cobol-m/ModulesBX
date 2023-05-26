@@ -12,11 +12,12 @@
 
 /** @var \CMain $APPLICATION */
 
-use ANZ\Appointment\Config\OptionList;
-use ANZ\Appointment\Internals\Control\ServiceManager;
+
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\UI\Extension;
+use Griz\Telegram\Config\OptionList;
+use Griz\Telegram\Internals\Control\ServiceManager;
 
 Loc::loadMessages(__FILE__);
 $module_id = ServiceManager::getModuleId();
@@ -31,11 +32,12 @@ try {
     if (!Loader::includeModule($module_id)) {
         throw new Exception(Loc::getMessage("ANZ_APPOINTMENT_MODULE_NOT_LOADED"));
     }
+
     $optionManager = new OptionList($module_id);
     $optionManager->processRequest();
     $optionManager->startDrawHtml();
 
-    //show access tab. It works only in 'options.php' context, therefore, html rendering split into two parts
+//    show access tab. It works only in 'options.php' context, therefore, html rendering split into two parts
     $optionManager->tabControl->BeginNextTab();
     require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/admin/group_rights.php");
 

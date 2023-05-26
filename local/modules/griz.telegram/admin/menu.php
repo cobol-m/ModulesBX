@@ -16,7 +16,7 @@ $menu = array(
             array(
                 'text' => Loc::getMessage('MYMODULE_SUBMENU_TITLE'),
                 'url' => '/bitrix/admin/config/telegram_integration.php?lang=' . LANGUAGE_ID,
-                'more_url' => array('mymodule_index.php?lang=' . LANGUAGE_ID),
+                'more_url' => array('telegram_integration.php?lang=' . LANGUAGE_ID),
                 'title' => Loc::getMessage('MYMODULE_SUBMENU_TITLE'),
             ),
         ),
