@@ -49,6 +49,9 @@ class Constants
     /**Option constants*/
     const OPTION_TYPE_FILE_POSTFIX   = '_FILE';
 
+    const OPTION_TELEGRAM_API_TOKEN      = 'telegram_api_token';
+    const OPTION_TELEGRAM_CHAT_ID     = 'telegram_api_chat_id';
+    const OPTION_TELEGRAM_CHAT_TYPE     = 'telegram_api_chat_type';
     const OPTION_KEY_API_WS_URL      = 'appointment_api_ws_url';
     const OPTION_KEY_API_WS_LOGIN    = 'appointment_api_db_login';
     const OPTION_KEY_API_WS_PASSWORD = 'appointment_api_db_password';

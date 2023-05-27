@@ -9,7 +9,7 @@
  * 10.07.2022 22:37
  * ==================================================
  */
-namespace ANZ\Appointment\Controller;
+namespace Griz\Telegram\Controller;
 
 use Bitrix\Main\Engine\Action;
 use Bitrix\Main\Engine\ActionFilter\Csrf;
@@ -17,13 +17,13 @@ use Bitrix\Main\Engine\ActionFilter\HttpMethod;
 use Bitrix\Main\Error;
 use Bitrix\Main\Result;
 use Exception;
-use ANZ\Appointment\Service\Container;
+use Griz\Telegram\Service\Container;
 use Bitrix\Main\Engine\Controller;
-use ANZ\Appointment\Service\Operation\Confirm;
+use Griz\Telegram\Service\Operation\Confirm;
 
 /**
  * Class MessageController
- * @package ANZ\Appointment\Controller
+ * @package Griz\Telegram\Controller
  */
 class MessageController extends Controller
 {

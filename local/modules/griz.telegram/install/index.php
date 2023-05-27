@@ -15,9 +15,13 @@ Loc::loadMessages(__FILE__);
 //в названии класса пишем название директории нашего модуля, только вместо точки ставим нижнее подчеркивание
 class griz_telegram extends CModule
 {
+
+    private ?string $docRoot;
     public function __construct()
     {
         $arModuleVersion = array();
+
+        $this->docRoot = Application::getDocumentRoot();
 
         include __DIR__ . '/version.php';
 
@@ -37,9 +41,10 @@ class griz_telegram extends CModule
     public function doInstall()
     {
         ModuleManager::registerModule($this->MODULE_ID);
+        $this->InstallFiles();
         $this->installDB();
         $this->InstallEvents();
-        $this->InstallFiles();
+
     }
 
     //вызываем метод удаления таблицы и удаляем модуль из регистра
@@ -85,26 +90,18 @@ class griz_telegram extends CModule
 
     function InstallFiles()
     {
-//        copyDirFiles(
-//            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/abtest/install/admin',
-//            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin',
-//            true, true
-//        );
-        copyDirFiles(
-            $_SERVER['DOCUMENT_ROOT'] . '/local/modules/griz.telegram/admin/main',
-            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin',
-            true, true
-        );
+
+        CopyDirFiles(__DIR__.'/admin/', $this->docRoot.'/bitrix/admin', true);
+        CopyDirFiles(__DIR__.'/js/', $this->docRoot.'/bitrix/js/'.$this->partnerId."/".$this->moduleNameShort, true, true);
+        CopyDirFiles(__DIR__.'/css/', $this->docRoot.'/bitrix/css/'.$this->partnerId."/".$this->moduleNameShort, true, true);
+
 
         return true;
     }
 
     function UnInstallFiles()
     {
-        deleteDirFiles(
-            $_SERVER['DOCUMENT_ROOT'] . '/local/modules/griz.telegram/admin/main',
-            $_SERVER['DOCUMENT_ROOT'] . '/bitrix/admin'
-        );
+        DeleteDirFiles(__DIR__.'/admin/', $this->docRoot.'/bitrix/admin');
 
         return true;
     }
