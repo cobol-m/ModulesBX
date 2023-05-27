@@ -2,12 +2,14 @@
 
 namespace Griz\Telegram\Internals\Control;
 
+use Griz\Telegram\Controller\OneCController;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Context;
 use Bitrix\Main\Engine\CurrentUser;
 use Bitrix\Main\Loader;
 use Bitrix\Main\UI\Extension;
 use Exception;
+use Griz\Telegram\Controller\MessageController;
 
 class ServiceManager
 {
@@ -43,5 +45,69 @@ class ServiceManager
             }
         }
     }
+
+
+    /**
+     * @return \Griz\Telegram\Internals\Control\ServiceManager
+     */
+    public static function getInstance(): ServiceManager
+    {
+        if (static::$instance === null)
+        {
+            static::$instance = new static();
+        }
+        return static::$instance;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function includeModule(): void
+    {
+        $this->includeControllers();
+        $this->includeDependentModules();
+        $this->includeDependentExtensions();
+    }
+
+    /**
+     * @throws \Bitrix\Main\LoaderException
+     */
+    private function includeControllers(): void
+    {
+        $arControllers = [
+            OneCController::class  => 'lib/Controller/OneCController.php',
+            MessageController::class => 'lib/Controller/MessageController.php',
+        ];
+
+        Loader::registerAutoLoadClasses(static::getModuleId(), $arControllers);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function includeDependentModules(): void
+    {
+        $dependencies = [
+            'main', 'iblock'
+        ];
+
+        foreach ($dependencies as $dependency) {
+            if (!Loader::includeModule($dependency)){
+                throw new Exception("Can not include module '$dependency'");
+            }
+        }
+    }
+
+    /**
+     * @return void
+     * @throws \Bitrix\Main\LoaderException
+     */
+    public function includeDependentExtensions(): void
+    {
+        Extension::load([
+            static::getModuleId().'.admin', "ui.icons",
+        ]);
+    }
+
 
 }

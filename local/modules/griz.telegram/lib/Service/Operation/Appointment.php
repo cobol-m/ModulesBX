@@ -9,10 +9,10 @@
  * 10.07.2022 22:37
  * ==================================================
  */
-namespace ANZ\Appointment\Service\Operation;
+namespace Griz\Telegram\Service\Operation;
 
-use ANZ\Appointment\Helper\Orm;
-use ANZ\Appointment\Internals\Control\ServiceManager;
+use Griz\Telegram\Helper\Orm;
+use AGriz\Telegram\Internals\Control\ServiceManager;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Error;
 use Bitrix\Main\Result;
@@ -24,7 +24,7 @@ use ANZ\Appointment\Service\Container;
 
 /**
  * Class Appointment
- * @package ANZ\Appointment\Service\Operation
+ * @package Griz\Telegram\Service\Operation
  */
 class Appointment
 {
@@ -71,21 +71,21 @@ class Appointment
     {
         try
         {
-            $container = Container::getInstance();
-            $writer = $container->getOneCWriter();
-
-            $response = $writer->deleteOrder($orderUid);
-            if ($response->isSuccess())
-            {
-                $ormRes = Orm::deleteRecord($id);
-                $data = $response->getData();
-                $response->setData(array_merge($data, $ormRes->getData()));
-                return $response;
-            }
-            else
-            {
-                throw new Exception(implode(", ", $response->getErrorMessages()));
-            }
+//            $container = Container::getInstance();
+//            $writer = $container->getOneCWriter();
+//
+//            $response = $writer->deleteOrder($orderUid);
+//            if ($response->isSuccess())
+//            {
+//                $ormRes = Orm::deleteRecord($id);
+//                $data = $response->getData();
+//                $response->setData(array_merge($data, $ormRes->getData()));
+//                return $response;
+//            }
+//            else
+//            {
+//                throw new Exception(implode(", ", $response->getErrorMessages()));
+//            }
         }
         catch (Exception $e)
         {

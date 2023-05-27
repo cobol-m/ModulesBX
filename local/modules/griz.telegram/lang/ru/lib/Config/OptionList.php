@@ -1,4 +1,16 @@
 <?php
+$MESS['GRIZ_STUDIO_MODULE_SETTINGS'] = "Настройки модуля";
+$MESS['GRIZ_STUDIO_MODULE_TAB_TESTING'] = "Тестирование подключения";
+$MESS['GRIZ_STUDIO_TELEGRAM_API_SETTINGS'] = "Подключение бота";
+$MESS['GRIZ_STUDIO_TELEGRAM_API_TOKEN'] = "API TOKEN";
+$MESS['GRIZ_STUDIO_TELEGRAM_CHAT_ID'] = "CHAT ID";
+$MESS['GRIZ_STUDIO_TELEGRAM_CHAT_SMS_TYPE'] = "Вид смс";
+$MESS['GRIZ_STUDIO_TELEGRAM_CHAT_SMS_VAL'] = "Группировать заказ";
+$MESS['GRIZ_STUDIO_TELEGRAM_CHAT_SMS_MESSAGE'] = "При включении данной опции, у Вас не будет кучи смс а будет первое которое пришло со статусом заказ создан и информация внутри будет добавляться ";
+
+
+
+
 $MESS['ANZ_APPOINTMENT_MODULE_SETTINGS'] = "Настройки модуля";
 $MESS['ANZ_APPOINTMENT_API_SETTINGS'] = "Подключение к API";
 $MESS['ANZ_APPOINTMENT_API_ADDRESS'] = "Адрес WSDL опубликованной базы 1С БИТ.УМЦ";

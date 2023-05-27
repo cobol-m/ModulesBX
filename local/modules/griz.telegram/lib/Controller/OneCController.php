@@ -9,11 +9,11 @@
  * 10.07.2022 22:37
  * ==================================================
  */
-namespace ANZ\Appointment\Controller;
+namespace Griz\Telegram\Controller;
 
-use ANZ\Appointment\Config\Configuration;
-use ANZ\Appointment\Service\Container;
-use ANZ\Appointment\Service\Operation\Appointment;
+use Griz\Telegram\Config\Configuration;
+use Griz\Telegram\Service\Container;
+use Griz\Telegram\Service\Operation\Appointment;
 use Bitrix\Main\Engine\Action;
 use Bitrix\Main\Engine\ActionFilter\Authentication;
 use Bitrix\Main\Engine\ActionFilter\Csrf;
@@ -23,12 +23,12 @@ use Bitrix\Main\Result;
 
 /**
  * Class OneCController
- * @package ANZ\Appointment\Controller
+ * @package Griz\Telegram\Controller
  */
 class OneCController extends Controller
 {
     /**
-     * @var \ANZ\Appointment\Service\Xml\FtpDataReader|\ANZ\Appointment\Service\OneC\Reader
+     * @var \Griz\Telegram\Service\Xml\FtpDataReader|\ANZ\Appointment\Service\OneC\Reader
      */
     private $reader;
 

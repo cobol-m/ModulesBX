@@ -9,21 +9,21 @@
  * 10.07.2022 22:37
  * ==================================================
  */
-namespace ANZ\Appointment\Service\Operation;
+namespace Griz\Telegram\Service\Operation;
 
-use ANZ\Appointment\Internals\Control\ServiceManager;
+use Griz\Telegram\Internals\Control\ServiceManager;
 use Bitrix\Main\Application;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Error;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Result;
 use Exception;
-use ANZ\Appointment\Config\Constants;
-use ANZ\Appointment\Service\Container;
+use Griz\Telegram\Config\Constants;
+use Griz\Telegram\Service\Container;
 
 /**
  * Class Confirm
- * @package ANZ\Appointment\Service\Operation
+ * @package Griz\Telegram\Service\Operation
  */
 class Confirm
 {
